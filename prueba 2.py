@@ -1,27 +1,25 @@
 
+permu=list("453")
+def caracteresPermutando(permu):
+    k0 = None
+    for i in range(len(permu)-1):
+        if permu[i]<permu[i+1]:
+            k0=i
+    if k0 == None:
+        return None
 
-dias=8
-casas=[1,1,1,0,1,0,1,1]
+    l0 = k0+1
+    for i in range(k0+1, len(permu)):
+        if permu[k0] < permu[i]:
+            l0 = i
 
+    permu[k0], permu[l0] = permu[l0], permu[k0]
+    permu[k0+1:] = reversed(permu[k0+1:])
+    return permu
 
-if dias <0 or dias >8 :
-    print("parametros equivocados")
-elif dias > 0 or dias <8:
-    
-    for x in range(dias):
-        for c in range(x):
-            if casas[c]==0:
-                casas [c]= 1
-            elif casas[c]==1:
-                casas[c]=0
-                
-                       
-
- 
-
-
-            
-print(casas)
+while permu:
+    print (permu)
+    permu = caracteresPermutando(permu)
 
 
 
